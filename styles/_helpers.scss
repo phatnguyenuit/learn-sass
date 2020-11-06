@@ -1,0 +1,33 @@
+/*
+  Spacing function based on 0.4rem (similar to 4px if html font size is 10px)
+*/
+@function spacing($args...) {
+  @if length($args) == 0 or length($args) > 4 {
+    @error "Required at least 1 param and maximum 4 params";
+  }
+
+  @if length($args) == 1 {
+    @return nth($args, 1) * 0.4rem;
+  }
+
+  @if length($args) == 2 {
+    $top_bottom: nth($args, 1);
+    $right_left: nth($args, 2);
+    @return $top_bottom * 0.4rem $right_left * 0.4rem;
+  }
+
+  @if length($args) == 3 {
+    $top: nth($args, 1);
+    $right: nth($args, 2);
+    $bottom: nth($args, 3);
+
+    @return $top * 0.4rem $right * 0.4rem $bottom * 0.4rem;
+  }
+
+  $top: nth($args, 1);
+  $right: nth($args, 2);
+  $bottom: nth($args, 3);
+  $left: nth($args, 4);
+
+  @return $top * 0.4rem $right * 0.4rem $bottom * 0.4rem $left * 0.4 + rem;
+}
