@@ -96,7 +96,7 @@ $supported_screen_sizes: ("": 0, 'sm': 35.5em, 'md': 48em, 'ld': 64em, 'xl': 80e
     }
   };
 
-  @debug $class_map;
+  // @debug $class_map;
 
   @if $screen_size != "" {
     /* Screen #{$screen_size} - #{$min_width} */
@@ -108,6 +108,12 @@ $supported_screen_sizes: ("": 0, 'sm': 35.5em, 'md': 48em, 'ld': 64em, 'xl': 80e
         vertical-align: top;
         text-rendering: auto
       }
+
+      @each $ratio, $ratio_classes in $class_map {
+        #{$ratio_classes} {
+          width: $ratio;
+        }
+      }
     }
   } @else {
     #{$classes} {
@@ -116,6 +122,12 @@ $supported_screen_sizes: ("": 0, 'sm': 35.5em, 'md': 48em, 'ld': 64em, 'xl': 80e
       word-spacing: normal;
       vertical-align: top;
       text-rendering: auto
+    }
+
+    @each $ratio, $ratio_classes in $class_map {
+      #{$ratio_classes} {
+        width: $ratio;
+      }
     }
   }
 }
