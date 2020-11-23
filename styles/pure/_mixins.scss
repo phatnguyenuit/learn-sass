@@ -1,0 +1,34 @@
+@mixin pure_styles($classes, $class_map, $screen_size, $min_width) {
+  @if $screen_size != '' {
+    /* Screen #{$screen_size} - #{$min_width} */
+    @media screen and (min-width: $min_width) {
+      #{$classes} {
+        display: inline-block;
+        letter-spacing: normal;
+        word-spacing: normal;
+        vertical-align: top;
+        text-rendering: auto;
+      }
+
+      @each $percentage, $percentage_classes in $class_map {
+        #{$percentage_classes} {
+          width: $percentage;
+        }
+      }
+    }
+  } @else {
+    #{$classes} {
+      display: inline-block;
+      letter-spacing: normal;
+      word-spacing: normal;
+      vertical-align: top;
+      text-rendering: auto;
+    }
+
+    @each $percentage, $percentage_classes in $class_map {
+      #{$percentage_classes} {
+        width: $percentage;
+      }
+    }
+  }
+}

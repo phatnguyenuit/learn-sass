@@ -1,0 +1,47 @@
+@function find_gcd($a, $b) {
+  @if $b == 0 {
+    @return $a;
+  }
+
+  @return find_gcd($b, $a % $b);
+}
+
+@function compute_pure_class_name(
+  $num_of_columns,
+  $total_columns: '',
+  $screen_size: ''
+) {
+  @if $screen_size != '' {
+    @if $total_columns != '' {
+      @return '.pure-u-' + $screen_size + '-' + $num_of_columns + '-' +
+        $total_columns;
+    }
+    @return '.pure-u-' + $screen_size + '-' + $num_of_columns;
+  }
+
+  @if $total_columns != '' {
+    @return '.pure-u-' + $num_of_columns + '-' + $total_columns;
+  }
+
+  @return '.pure-u-' + $num_of_columns;
+}
+
+@function map_get_with_default($map, $key, $default: null) {
+  $value: map-get($map, $key);
+  @if $value != null {
+    @return $value;
+  }
+
+  @return $default;
+}
+
+@function add_class_to_class_map($class_map, $key, $class) {
+  $key_classes: map_get_with_default($class_map, $key, ());
+  $key_classes: append($key_classes, $class, comma);
+  @return map-merge(
+    $class_map,
+    (
+      $key: $key_classes,
+    )
+  );
+}
