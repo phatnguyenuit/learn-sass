@@ -1,22 +1,17 @@
-@mixin pure_styles($classes, $class_map, $screen_size, $min_width) {
-  @if $screen_size != '' {
-    /* Screen #{$screen_size} - #{$min_width} */
-    @media screen and (min-width: $min_width) {
-      #{$classes} {
-        display: inline-block;
-        letter-spacing: normal;
-        word-spacing: normal;
-        vertical-align: top;
-        text-rendering: auto;
-      }
-
-      @each $percentage, $percentage_classes in $class_map {
-        #{$percentage_classes} {
-          width: $percentage;
-        }
-      }
+// Generate width class styles
+// @class_map: (<width>: (class1, class2, ...class n))
+// @return width class styles
+@mixin pure_width_styles($class_map) {
+  @each $percentage, $percentage_classes in $class_map {
+    #{$percentage_classes} {
+      width: $percentage;
     }
-  } @else {
+  }
+}
+
+@mixin pure_screen_styles($classes, $class_map, $screen_size, $min_width) {
+  /* Screen #{$screen_size} - #{$min_width} */
+  @media screen and (min-width: $min_width) {
     #{$classes} {
       display: inline-block;
       letter-spacing: normal;
@@ -25,10 +20,27 @@
       text-rendering: auto;
     }
 
-    @each $percentage, $percentage_classes in $class_map {
-      #{$percentage_classes} {
-        width: $percentage;
-      }
-    }
+    @include pure_width_styles($class_map);
+  }
+}
+
+@mixin pure_base_styles($classes, $class_map) {
+  #{$classes} {
+    display: inline-block;
+    letter-spacing: normal;
+    word-spacing: normal;
+    vertical-align: top;
+    text-rendering: auto;
+  }
+
+  @include pure_width_styles($class_map);
+}
+
+// Generate pure styles
+@mixin pure_styles($classes, $class_map, $screen_size, $min_width) {
+  @if $screen_size != '' {
+    @include pure_screen_styles($classes, $class_map, $screen_size, $min_width);
+  } @else {
+    @include pure_base_styles($classes, $class_map);
   }
 }
