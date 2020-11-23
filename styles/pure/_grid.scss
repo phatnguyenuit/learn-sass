@@ -10,6 +10,15 @@ $SUPPORTED_SCREEN_SIZES: (
   'xl': 80em,
 );
 
+.pure-g {
+  letter-spacing: -0.31em;
+  text-rendering: optimizespeed;
+  font-family: FreeSans, Arimo, Droid Sans, Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+}
+
 @each $screen_size, $min_width in $SUPPORTED_SCREEN_SIZES {
   $classes: ();
 
