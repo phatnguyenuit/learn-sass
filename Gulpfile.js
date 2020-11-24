@@ -16,7 +16,7 @@ const input = 'styles/**/*.scss';
 const output = 'dist';
 
 const compile_scss_to_css = () => {
-  console.log(autoprefixer().info());
+  // console.log(autoprefixer().info());
   return (
     gulp //add gulp without return to keep session going
       // Find all .scss files from the sass/ folder
