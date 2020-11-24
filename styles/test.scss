@@ -4,3 +4,12 @@
   margin: spacing(2);
   text-align: center;
 }
+
+.example {
+  display: grid;
+  grid-template-columns: auto;
+  transition: all 0.5s;
+  user-select: none;
+  background: linear-gradient(to bottom, white, black);
+  outline: none;
+}

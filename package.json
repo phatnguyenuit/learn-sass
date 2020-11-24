@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "gulp --production",
-    "dev": "gulp watch"
+    "build": "NODE_ENV=production gulp",
+    "dev": "NODE_ENV=development gulp watch"
   },
   "repository": {
     "type": "git",
@@ -19,11 +19,12 @@
   },
   "homepage": "https://github.com/phatnguyenuit/learn-sass#readme",
   "devDependencies": {
+    "autoprefixer": "9",
     "gulp": "^4.0.2",
-    "gulp-autoprefixer": "^7.0.1",
     "gulp-clean-css": "^4.3.0",
     "gulp-cli": "^2.3.0",
     "gulp-mode": "^1.0.2",
+    "gulp-postcss": "^9.0.0",
     "gulp-prettier": "^3.0.0",
     "gulp-sass": "^4.1.0",
     "gulp-sourcemaps": "^3.0.0"

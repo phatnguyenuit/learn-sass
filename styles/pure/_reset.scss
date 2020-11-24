@@ -8,15 +8,3 @@ html {
   font-size: 16px;
   font-family: sans-serif;
 }
-
-.grid {
-  display: grid;
-}
-
-.example {
-  display: grid;
-  transition: all .5s;
-  user-select: none;
-  background: linear-gradient(to bottom, white, black);
-  outline: none;
-}
