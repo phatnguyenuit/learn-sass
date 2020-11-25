@@ -19,7 +19,7 @@ const compile_scss_to_css = () => {
   // console.log(autoprefixer().info());
   return (
     gulp //add gulp without return to keep session going
-      // Find all .scss files from the sass/ folder
+      // Find all .scss files from the styles/ folder
       .src(input)
       // Init sourcemaps if on development mode
       .pipe(mode.development(sourcemaps.init()))
